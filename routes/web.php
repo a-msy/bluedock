@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 | https://qiita.com/namizatop/items/5d56d96d4c255a0e3a87
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@index')->name('home');
 
 // ユーザー
 Route::namespace('User')->prefix('user')->name('user.')->group(function () {
