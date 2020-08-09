@@ -1,5 +1,5 @@
-@extends('layouts.master.app')
-
+@extends('layouts.common')
+@include('layouts.master.header')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -14,10 +14,11 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <a href="{{route('master.picture.input')}}">画像追加</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+@include('layouts.footer')

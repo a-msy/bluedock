@@ -70,6 +70,10 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
 
         // TOPページ
         Route::resource('home', 'HomeController', ['only' => 'index']);
+        Route::prefix('picture')->name('picture.')->group(function (){
+            Route::get('input','PictureController@input')->name('input');
+            Route::post('upload','PictureController@upload')->name('upload');
+        });
 
     });
 });
