@@ -40,6 +40,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
     // ログイン認証関連
     Auth::routes([
+        'login' => true,
         'register' => true,
         'reset' => false,
         'verify' => true
@@ -58,6 +59,7 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
 
     // ログイン認証関連
     Auth::routes([
+        'login'=>true,
         'register' => false,
         'reset' => false,
         'verify' => false
