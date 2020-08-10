@@ -17,6 +17,7 @@ class CreatePicturesTable extends Migration
             $table->id();
             $table->text('filename');
             $table->text('alt')->nullable();
+            $table->dateTime('deleted_at')->nullable();
             $table->timestamps();
         });
     }

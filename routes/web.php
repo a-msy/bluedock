@@ -73,6 +73,8 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
         Route::prefix('picture')->name('picture.')->group(function (){
             Route::get('input','PictureController@input')->name('input');
             Route::post('upload','PictureController@upload')->name('upload');
+            Route::post('delete','PictureController@delete')->name('delete');
+            Route::get('index','PictureController@index')->name('index');
         });
 
     });

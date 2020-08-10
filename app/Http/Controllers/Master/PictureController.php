@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Master;
 use App\Models\Picture;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PictureController extends Controller
 {
@@ -36,5 +37,21 @@ class PictureController extends Controller
         }
         // GET
         return view('master.home');
+    }
+
+    public function index(){
+        $pictures = Picture::whereNull('deleted_at')->paginate(100);
+        return view('master.picture.index')->with('pictures',$pictures);
+    }
+
+    public function delete(Request $request){
+        $picture = Picture::find($request->id);
+
+        if(Storage::disk('local')->delete('public/img/'.$picture->filename)){
+            $picture->deleted_at = now();
+            $picture->save();
+        }
+
+        return redirect(route('master.picture.index'));
     }
 }
