@@ -79,6 +79,7 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
 
         Route::prefix('article')->name('article.')->group(function (){
             Route::get('create','ArticleController@create')->name('create');
+            Route::post('save','ArticleController@save')->name('save');
         });
 
     });
