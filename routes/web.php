@@ -77,5 +77,9 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
             Route::get('index','PictureController@index')->name('index');
         });
 
+        Route::prefix('article')->name('article.')->group(function (){
+            Route::get('create','ArticleController@create')->name('create');
+        });
+
     });
 });

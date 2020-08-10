@@ -23,7 +23,7 @@ class PictureController extends Controller
                 'alt' => 'required|max:255',
             ]);
 
-            $path = $request->file('image_file')->store('public/img');
+            $path = $request->file('image_file')->store('public/img/article_pictures');
             $alt = $request->alt;
 
             $picture = Picture::create([
@@ -47,7 +47,7 @@ class PictureController extends Controller
     public function delete(Request $request){
         $picture = Picture::find($request->id);
 
-        if(Storage::disk('local')->delete('public/img/'.$picture->filename)){
+        if(Storage::disk('local')->delete('public/img/article_pictures'.$picture->filename)){
             $picture->deleted_at = now();
             $picture->save();
         }

@@ -16,6 +16,7 @@
 
                         <a href="{{route('master.picture.input')}}">画像追加</a>
                         <a href="{{route('master.picture.index')}}">画像一覧</a>
+                        <a href="{{route('master.article.create')}}">記事作成</a>
                     </div>
                 </div>
             </div>

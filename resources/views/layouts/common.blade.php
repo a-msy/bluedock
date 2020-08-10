@@ -30,6 +30,7 @@
     <link href="{{ asset('css/app.css')}}" rel="stylesheet">
     <link href="{{ asset('css/style.css?'.now())}}" rel="stylesheet">
     @yield('addcss')
+    @yield('addjsHEAD')
 </head>
 <body>
 @yield('header')

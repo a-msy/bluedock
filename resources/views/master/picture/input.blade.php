@@ -12,7 +12,7 @@
             </div>
         @endif
         @if(\Session::has('picture'))
-            <img style="width:100%;" src="{{ asset('/storage/img/'.\Session('picture')->filename) }}" alt="{{\Session('picture')->alt}}">
+            <img style="width:100%;" src="{{ asset('/storage/img/article_pictures/'.\Session('picture')->filename) }}" alt="{{\Session('picture')->alt}}">
         @endif
         <form action="{{ route('master.picture.upload') }}" method="POST" enctype="multipart/form-data">
             @csrf

@@ -5,7 +5,7 @@
         <div class="row">
             @foreach($pictures as $picture)
                 <div class="col-md-4 mb-3">
-                    <img src="{{asset('/storage/img/'.$picture->filename)}}" alt="{{$picture->alt}}" style="width:100%">
+                    <img src="{{asset('/storage/img/article_pictures/'.$picture->filename)}}" alt="{{$picture->alt}}" style="width:100%">
                     <p>{{$picture->alt}}</p>
                     <form action="{{route('master.picture.delete')}}" method="POST">
                         @csrf
