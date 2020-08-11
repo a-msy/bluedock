@@ -1,4 +1,4 @@
-@extends('layouts.common')
+@extends('layouts.master_common')
 @include('layouts.master.header')
 @section('content')
     <section class="container">

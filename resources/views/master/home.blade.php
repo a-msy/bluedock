@@ -1,4 +1,4 @@
-@extends('layouts.common')
+@extends('layouts.master_common')
 @include('layouts.master.header')
 @section('content')
     <div class="container">
@@ -13,10 +13,6 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
-                        <a href="{{route('master.picture.input')}}">画像追加</a>
-                        <a href="{{route('master.picture.index')}}">画像一覧</a>
-                        <a href="{{route('master.article.create')}}">記事作成</a>
                     </div>
                 </div>
             </div>

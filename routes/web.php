@@ -75,11 +75,14 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
             Route::post('upload','PictureController@upload')->name('upload');
             Route::post('delete','PictureController@delete')->name('delete');
             Route::get('index','PictureController@index')->name('index');
+            Route::post('edit/alt','PictureController@editAlt')->name('edit.alt');
         });
 
         Route::prefix('article')->name('article.')->group(function (){
             Route::get('create','ArticleController@create')->name('create');
             Route::post('save','ArticleController@save')->name('save');
+            Route::get('index','ArticleController@index')->name('index');
+            Route::get('edit/{id}','ArticleController@edit')->name('edit');
         });
 
     });
