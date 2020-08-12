@@ -42,14 +42,15 @@
             plugins: [
                 'advlist autolink lists link image charmap print preview anchor',
                 'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount', 'image'
+                'insertdatetime media table paste code help wordcount', 'image', 'n1ed'
             ],
             toolbar: 'undo redo | formatselect | ' +
                 'bold italic backcolor | alignleft aligncenter ' +
                 'alignright | bullist numlist | ' +
                 'removeformat | image',
             language: "ja",
-            image_list: "{{route('image_list')}}"
+            image_list: "{{route('image_list')}}",
+            apiKey: "0NEHDFLT",
         });
     </script>
 @endsection

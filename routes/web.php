@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','HomeController@index')->name('home');
 
+
 // ユーザー
 Route::namespace('User')->prefix('user')->name('user.')->group(function () {
 

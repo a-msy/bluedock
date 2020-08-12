@@ -5,7 +5,7 @@
         <div class="row">
             @foreach($pictures as $picture)
                 <div class="col-md-4 mb-3">
-                    <img src="{{asset('/storage/img/article_pictures_thumb/'.$picture->filename)}}"
+                    <img src="{{asset('/storage/img/article_pictures/thumb/'.$picture->filename)}}"
                          alt="{{$picture->alt}}"
                          style="width:100%">
                     <form action="{{route('master.picture.edit.alt')}}" method="post" class="form-inline">

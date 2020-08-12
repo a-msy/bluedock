@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('image_list','HomeController@ImageList')->name('image_list');
+Route::post('ajaxupload','Master\PictureController@ajaxupload')->name('api.ajaxupload');
+Route::any('filemanager','Master\PictureController@filemanager')->name('api.filemanager');
