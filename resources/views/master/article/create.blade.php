@@ -1,5 +1,13 @@
 @extends('layouts.master_common')
 @include('layouts.master.header')
+@section('addjs')
+    <style>
+        .inline--1b5Cu{
+            display: none;
+        }
+    </style>
+{{--    TODO::画像アップロードをファイルマネージャからできるようにする--}}
+@endsection
 @section('content')
     <form action="{{route('master.article.save')}}" method="post">
         <section class="container">
@@ -51,6 +59,8 @@
             language: "ja",
             image_list: "{{route('image_list')}}",
             apiKey: "0NEHDFLT",
+            urlFileManager: "{{route('api.filemanager')}}",
+            urlFiles: "{{asset('storage/img')}}"
         });
     </script>
 @endsection
