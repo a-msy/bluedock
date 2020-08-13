@@ -9,6 +9,7 @@
  */
 
 return [
+    'base_directory'=>'http://127.0.0.1:8000/storage/img/article_pictures',
     /*
     |--------------------------------------------------------------------------
     | Routing

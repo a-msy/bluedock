@@ -61,6 +61,7 @@ return [
     'btn-copy-crop' => 'コピー&トリミング',
     'btn-cancel' => 'キャンセル',
     'btn-resize' => 'リサイズ',
+    'btn-confirm' => 'はい',
 
     'resize-ratio' => '比率:',
     'resize-scaled' => 'イメージの縮尺:',

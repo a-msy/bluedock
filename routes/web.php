@@ -78,6 +78,9 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
             Route::get('index','PictureController@index')->name('index');
             Route::post('edit/alt','PictureController@editAlt')->name('edit.alt');
         });
+        Route::prefix('lfm')->name('lfm.')->group(function (){
+            \UniSharp\LaravelFilemanager\Lfm::routes();
+        });
 
         Route::prefix('article')->name('article.')->group(function (){
             Route::get('create','ArticleController@create')->name('create');

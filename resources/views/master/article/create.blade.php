@@ -6,6 +6,11 @@
             display: none;
         }
     </style>
+    <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
+    <script>
+        var route_prefix = "{{url('master/lfm')}}";
+        $('#lfm').filemanager('image', '/storage/img',{prefix: route_prefix});
+    </script>
 {{--    TODO::画像アップロードをファイルマネージャからできるようにする--}}
 @endsection
 @section('content')
@@ -23,6 +28,18 @@
                 </div>
                 <div class="col-2">
                     <div class="form-group">
+                        <label>アイキャッチ画像</label>
+                        <div style="height:150px; width: 100%; overflow: hidden;">
+                            <img id="holder">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">画像選択</a>
+                            </span>
+                            <input id="thumbnail" class="form-control" type="text" name="filepath">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <select name="type" class="form-control">
                             @foreach(config('const.ArticleTYPE') as $key=>$type)
                                 <option value="{{$key}}" @if(isset($article) == true) @if($article->type == $key) selected @endif @elseif($key == 0 ) selected @endif >{{$type}}</option>
@@ -31,10 +48,6 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-info">保存</button>
-                    </div>
-                    <div class="form-group">
-                        <label>この記事に関連する画像</label>
-
                     </div>
                 </div>
             </div>
@@ -50,7 +63,7 @@
             plugins: [
                 'advlist autolink lists link image charmap print preview anchor',
                 'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount', 'image', 'n1ed'
+                'insertdatetime media table paste code help wordcount', 'image',
             ],
             toolbar: 'undo redo | formatselect | ' +
                 'bold italic backcolor | alignleft aligncenter ' +
