@@ -32,13 +32,19 @@ class ArticleController extends Controller
 
     public function save(Request $request)
     {
+        $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required',
+        ]);
+        $r = $request->all();
         $article = Article::updateOrCreate(
-            ['id'=>$request->id],
+            ['id'=>$r["id"]],
             [
-                'title' => $request->title,
-                'body' => $request->body,
-                'type' => $request->type
+                'title' => $r["title"],
+                'body' => $r["body"],
+                'type' => $r["type"],
+                'eyecatch'=>$r["file_path"],
             ]);
-        return redirect(route('master.article.edit', ['id' => $article->id]));
+        return redirect(route('master.article.index'));
     }
 }

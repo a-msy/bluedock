@@ -1,11 +1,6 @@
 @extends('layouts.master_common')
 @include('layouts.master.header')
 @section('addjs')
-    <style>
-        .inline--1b5Cu {
-            display: none;
-        }
-    </style>
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
     <script>
         var route_prefix = "{{url('master/lfm')}}";
@@ -17,15 +12,21 @@
         CKEDITOR.replace('editor1', {
             filebrowserBrowseUrl: '{{url('master/lfm')}}',
             filebrowserImageBrowseUrl: '{{url('master/lfm')}}',
-            filebrowserUploadUrl: '{{route('master.picture.upload')}}',
-            filebrowserImageUploadUrl: '{{route('master.picture.upload')}}',
         });
     </script>
-    {{--    TODO::画像アップロードをファイルマネージャからできるようにする--}}
 @endsection
 @section('content')
     <form action="{{route('master.article.save')}}" method="post">
         <section class="container">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-10">
                     @csrf
@@ -35,20 +36,19 @@
                     <input type="text" name="title" placeholder="タイトルを入力" class="form-control mb-5"
                            @isset($article) value="{{$article->title}}" @endisset>
                     <textarea id=editor1 name="body"
-                              class="ckeditor"> @isset($article){{$article->body}}@endisset </textarea>
+                              class="ckeditor" required> @isset($article){{$article->body}}@endisset </textarea>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
                         <label>アイキャッチ画像</label>
-                        <div style="height:150px; width: 100%; overflow: hidden;">
-                            <img id="holder">
+                        <div style="height:150px; width: 100%; overflow: hidden;" id="holder">
                         </div>
                         <div class="input-group">
                             <span class="input-group-btn">
                                 <a id="lfm" data-input="thumbnail" data-preview="holder"
                                    class="btn btn-primary">画像選択</a>
+                                <input id="thumbnail" class="form-control" type="text" name="file_path" @isset($article) value="{{$article->eyecatch}}" @endisset>
                             </span>
-                            <input id="thumbnail" class="form-control" type="text" name="filepath">
                         </div>
                     </div>
                     <div class="form-group">
