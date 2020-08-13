@@ -2,16 +2,26 @@
 @include('layouts.master.header')
 @section('addjs')
     <style>
-        .inline--1b5Cu{
+        .inline--1b5Cu {
             display: none;
         }
     </style>
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
     <script>
         var route_prefix = "{{url('master/lfm')}}";
-        $('#lfm').filemanager('image', '/storage/img',{prefix: route_prefix});
+        $('#lfm').filemanager('image', '/storage/img', {prefix: route_prefix});
     </script>
-{{--    TODO::画像アップロードをファイルマネージャからできるようにする--}}
+    <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('ckeditor/adapters/jquery.js')}}"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('editor1', {
+            filebrowserBrowseUrl: '{{url('master/lfm')}}',
+            filebrowserImageBrowseUrl: '{{url('master/lfm')}}',
+            filebrowserUploadUrl: '{{route('master.picture.upload')}}',
+            filebrowserImageUploadUrl: '{{route('master.picture.upload')}}',
+        });
+    </script>
+    {{--    TODO::画像アップロードをファイルマネージャからできるようにする--}}
 @endsection
 @section('content')
     <form action="{{route('master.article.save')}}" method="post">
@@ -24,7 +34,8 @@
                     @endisset
                     <input type="text" name="title" placeholder="タイトルを入力" class="form-control mb-5"
                            @isset($article) value="{{$article->title}}" @endisset>
-                    <textarea name="body"> @isset($article){{$article->body}}@endisset </textarea>
+                    <textarea id=editor1 name="body"
+                              class="ckeditor"> @isset($article){{$article->body}}@endisset </textarea>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
@@ -34,7 +45,8 @@
                         </div>
                         <div class="input-group">
                             <span class="input-group-btn">
-                                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">画像選択</a>
+                                <a id="lfm" data-input="thumbnail" data-preview="holder"
+                                   class="btn btn-primary">画像選択</a>
                             </span>
                             <input id="thumbnail" class="form-control" type="text" name="filepath">
                         </div>
@@ -42,7 +54,9 @@
                     <div class="form-group">
                         <select name="type" class="form-control">
                             @foreach(config('const.ArticleTYPE') as $key=>$type)
-                                <option value="{{$key}}" @if(isset($article) == true) @if($article->type == $key) selected @endif @elseif($key == 0 ) selected @endif >{{$type}}</option>
+                                <option value="{{$key}}"
+                                        @if(isset($article) == true) @if($article->type == $key) selected
+                                        @endif @elseif($key == 0 ) selected @endif >{{$type}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -55,25 +69,3 @@
     </form>
 @endsection
 @include('layouts.footer')
-@section('addjsHEAD')
-    <script src="{{asset('js/tinymce/tinymce.min.js')}}"></script>
-    <script>
-        tinymce.init({
-            selector: "textarea",  // change this value according to your HTML
-            plugins: [
-                'advlist autolink lists link image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount', 'image',
-            ],
-            toolbar: 'undo redo | formatselect | ' +
-                'bold italic backcolor | alignleft aligncenter ' +
-                'alignright | bullist numlist | ' +
-                'removeformat | image',
-            language: "ja",
-            image_list: "{{route('image_list')}}",
-            apiKey: "0NEHDFLT",
-            urlFileManager: "{{route('api.filemanager')}}",
-            urlFiles: "{{asset('storage/img')}}"
-        });
-    </script>
-@endsection
