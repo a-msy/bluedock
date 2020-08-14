@@ -62,9 +62,14 @@
         </ul>
     </div>
 @endif
-@if(session()->has('message'))
+@if(session()->has('success'))
+    <div class="alert alert-info">
+        {{session('success')}}
+    </div>
+@endif
+@if(session()->has('error'))
     <div class="alert alert-danger">
-        {{session('message')}}
+        {{session('error')}}
     </div>
 @endif
 @endsection

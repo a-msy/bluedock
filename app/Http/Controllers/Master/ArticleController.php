@@ -73,6 +73,6 @@ class ArticleController extends Controller
             Tagging::where(['article_id' => $article->id, 'tag_id' => $delete_tagging])->delete();
         }
 
-        return redirect(route('master.article.index'));
+        return redirect(route('master.article.edit',['id'=>$article->id]))->with('success','記事を保存しました');
     }
 }
