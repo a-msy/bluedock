@@ -89,5 +89,10 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
             Route::get('edit/{id}','ArticleController@edit')->name('edit');
         });
 
+        Route::prefix('tag')->name('tag.')->group(function (){
+            Route::get('index','TagController@index')->name('index');
+            Route::post('create','TagController@create')->name('create');
+        });
+
     });
 });

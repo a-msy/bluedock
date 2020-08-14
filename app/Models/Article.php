@@ -10,4 +10,9 @@ class Article extends Model
     protected $fillable = [
         'id', 'title', 'type', 'body', 'created_at', 'updated_at', 'eyecatch'
     ];
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Models\Tag','taggings');
+    }
 }

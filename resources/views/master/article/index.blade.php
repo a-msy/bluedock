@@ -25,6 +25,11 @@
                 </tr>
             @endforeach
             </tbody>
+            <tfoot>
+            <tr>
+                {{ $articles->links() }}
+            </tr>
+            </tfoot>
         </table>
     </div>
 @endsection

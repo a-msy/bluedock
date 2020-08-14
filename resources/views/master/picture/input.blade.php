@@ -2,15 +2,6 @@
 @include('layouts.master.header')
 @section('content')
     <section class="container">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
         @if(\Session::has('picture'))
             <img style="width:100%;" src="{{ asset('/storage/img/article_pictures/'.\Session('picture')->filename) }}" alt="{{\Session('picture')->alt}}">
         @endif

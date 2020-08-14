@@ -22,6 +22,7 @@
                 </div>
             @endforeach
         </div>
+        {{ $pictures->links() }}
     </section>
 @endsection
 @include('layouts.footer')

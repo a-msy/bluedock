@@ -14,19 +14,28 @@
             filebrowserImageBrowseUrl: '{{url('master/lfm')}}',
         });
     </script>
+    <script src="{{asset('js/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('js/tag-it.min.js')}}"></script>
+    <script>
+        $.ajax({
+            url: '{{route('api.tag_list')}}',
+            dataType: 'json',
+            success: function (data) {
+                $('#tag-input').tagit({
+                    availableTags: data
+                })
+            }
+        });
+    </script>
+@endsection
+@section('addcss')
+    <link rel="stylesheet" href="{{asset('css/jquery-ui.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/tagit.ui-zendesk.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery.tagit.css')}}">
 @endsection
 @section('content')
     <form action="{{route('master.article.save')}}" method="post">
         <section class="container">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             <div class="row">
                 <div class="col-10">
                     @csrf
@@ -59,6 +68,10 @@
                                         @endif @elseif($key == 0 ) selected @endif >{{$type}}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label>タグ</label>
+                        <input type="text" @isset($article) value=" @foreach($article->tags as $tag) {{$tag->name}}, @endforeach " @endisset name="tags" id="tag-input">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-info">保存</button>

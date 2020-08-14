@@ -12,6 +12,6 @@
         <a href="{{route('master.article.index')}}">記事一覧</a>
     </li>
     <li>
-        aaaaaaaaaaa
+        <a href="{{route('master.tag.index')}}">タグ一覧</a>
     </li>
 </ul>
