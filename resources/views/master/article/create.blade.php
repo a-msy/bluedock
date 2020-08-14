@@ -70,7 +70,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>タグ</label>
+                        <label>タグ（タグ一覧にないタグは保存されません）</label>
                         <input type="text" @isset($article) value=" @foreach($article->tags as $tag) {{$tag->name}}, @endforeach " @endisset name="tags" id="tag-input">
                     </div>
                     <div class="form-group">
