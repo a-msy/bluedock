@@ -15,7 +15,7 @@ class CreatePicturesTable extends Migration
     {
         Schema::create('pictures', function (Blueprint $table) {
             $table->id();
-            $table->text('filename');
+            $table->string('filename')->unique();
             $table->text('alt')->nullable();
             $table->dateTime('deleted_at')->nullable();
             $table->timestamps();

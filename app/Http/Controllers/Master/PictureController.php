@@ -27,18 +27,20 @@ class PictureController extends Controller
                 'alt' => 'required|max:255',
             ]);
 
-            $filename = $request->file('image_file')->store('public/img/article_pictures');
+            $file = $request->file('image_file');
+            $file_extension = $file->getClientOriginalExtension();
+            $filename = sha1(uniqid());
 
-            $image = Image::make($request->file('image_file')->getRealPath());
-            $image->resize(null, 300, function ($constraint) {
+            Image::make($file)->resize(750, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })
-                ->save(public_path() . '/storage/img/article_pictures/thumb' . '/' . basename($filename));
-            $alt = $request->alt;
+            })->save(public_path() . '/storage/img/article_pictures/' . '/' . $filename . '.' . $file_extension);
+            Image::make($file)->resize(250, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path() . '/storage/img/article_pictures/thumb' . '/' . $filename . '.' . $file_extension);
 
             $picture = Picture::create([
-                'filename' => basename($filename),
-                'alt' => $alt,
+                'filename' => $filename . '.' . $file_extension,
+                'alt' => $request->alt,
             ]);
             return redirect(route('master.picture.input'))->with([
                 'success' => '画像を保存しました',
@@ -51,16 +53,17 @@ class PictureController extends Controller
 
     public function ajaxupload()
     {
-        return response()->json(['location'=>'unchi']);
+        return response()->json(['location' => 'unchi']);
 
     }
 
-    public function filemanager(){
+    public function filemanager()
+    {
         FlmngrServer::flmngrRequest(
             array(
                 'dirFiles' => 'storage/img',
-                'dirTmp'   => 'storage/img',
-                'dirCache'   => 'storage/img'
+                'dirTmp' => 'storage/img',
+                'dirCache' => 'storage/img'
             )
         );
     }

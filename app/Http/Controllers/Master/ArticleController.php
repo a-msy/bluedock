@@ -36,14 +36,14 @@ class ArticleController extends Controller
             'title' => 'required|max:255',
             'body' => 'required',
         ]);
-        $r = $request->all();
+        preg_match('/([^\/]+?)?$/',$request->file_path,$matches);
         $article = Article::updateOrCreate(
-            ['id'=>$r["id"]],
+            ['id'=>$request->id],
             [
-                'title' => $r["title"],
-                'body' => $r["body"],
-                'type' => $r["type"],
-                'eyecatch'=>$r["file_path"],
+                'title' => $request->title,
+                'body' => $request->body,
+                'type' => $request->type,
+                'eyecatch'=>$matches[0],
             ]);
         return redirect(route('master.article.index'));
     }
