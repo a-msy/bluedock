@@ -1,5 +1,4 @@
 @extends('layouts.master_common')
-@include('layouts.master.header')
 @section('content')
     <section class="container">
         <div class="row">
@@ -25,5 +24,4 @@
         {{ $pictures->links() }}
     </section>
 @endsection
-@include('layouts.footer')
 

@@ -1,5 +1,4 @@
 @extends('layouts.master_common')
-@include('layouts.master.header')
 @section('content')
     <section class="container">
         @if(\Session::has('picture'))
@@ -19,4 +18,3 @@
         </form>
     </section>
 @endsection
-@include('layouts.footer')

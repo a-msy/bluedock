@@ -1,5 +1,4 @@
 @extends('layouts.master_common')
-@include('layouts.master.header')
 @section('addjs')
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
     <script>
@@ -81,4 +80,3 @@
         </section>
     </form>
 @endsection
-@include('layouts.footer')

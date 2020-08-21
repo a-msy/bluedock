@@ -1,5 +1,4 @@
 @extends('layouts.master_common')
-@include('layouts.master.header')
 @section('content')
     <div class="container">
         <h1>記事一覧</h1>
@@ -33,4 +32,3 @@
         </table>
     </div>
 @endsection
-@include('layouts.footer')

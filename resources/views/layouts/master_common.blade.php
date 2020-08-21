@@ -38,7 +38,7 @@
     @yield('addjsHEAD')
 </head>
 <body>
-@yield('header')
+@include('layouts.master.header')
 <div id="app" class="mt-3">
     <div class="row">
         <div class="col-2">
@@ -49,7 +49,7 @@
         </div>
     </div>
 </div>
-@yield('footer')
+@include('layouts.footer')
 <script src="{{asset('js/app.js')}}"></script>
 @yield('addjs')
 </body>

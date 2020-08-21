@@ -1,5 +1,3 @@
-@section('footer')
-    <footer class="container">
-        footer
-    </footer>
-@endsection
+<footer class="container">
+    footer
+</footer>

@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    @yield('addjsHEAD')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('addcss')
 </head>
 <body>
 <div id="app">
@@ -75,9 +76,31 @@
             </div>
         </div>
     </nav>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if(session()->has('success'))
+        <div class="alert alert-info">
+            {{session('success')}}
+        </div>
+    @endif
+    @if(session()->has('error'))
+        <div class="alert alert-danger">
+            {{session('error')}}
+        </div>
+    @endif
     <main class="py-4">
         @yield('content')
     </main>
+    @include('layouts.footer')
 </div>
+<script src="{{ asset('js/app.js') }}"></script>
+@yield('addjs')
 </body>
 </html>

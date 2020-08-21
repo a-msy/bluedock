@@ -1,5 +1,4 @@
 @extends('layouts.master_common')
-@include('layouts.master.header')
 @section('content')
     <div class="container">
         <h2>タグ登録</h2>
@@ -35,4 +34,3 @@
         </table>
     </div>
 @endsection
-@include('layouts.footer')

@@ -13,8 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    <a href="{{route('admin.profile.edit')}}">プロフィール編集</a>
                 </div>
             </div>
         </div>
