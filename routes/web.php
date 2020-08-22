@@ -22,6 +22,7 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
 
     // ログイン認証関連
     Auth::routes([
+        'login'=>true,
         'register' => true,
         'reset' => false,
         'verify' => false

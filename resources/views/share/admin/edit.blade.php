@@ -1,16 +1,19 @@
-@section('addjs')
+@section('addjsHEAD')
     <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
-    <script src="{{asset('ckeditor/adapters/jquery.js')}}"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-            CKEDITOR.replace('profile');
-        });
+        CKEDITOR.config.customConfig = '/ckeditor/adminconfig.js';
+        CKEDITOR.replace('profile');
     </script>
 @endsection
+@section('addjs')
+    <script src="{{asset('ckeditor/adapters/jquery.js')}}"></script>
+@endsection
 @section('addcss')
-    <style>
-        #cke_19,#cke_25,#cke_32{ display: none }
-    </style>
+{{--    <style>--}}
+{{--        #cke_19, #cke_25, #cke_32 {--}}
+{{--            display: none--}}
+{{--        }--}}
+{{--    </style>--}}
 @endsection
 <section class="container">
     <div class="accordion" id="accordion-4">
