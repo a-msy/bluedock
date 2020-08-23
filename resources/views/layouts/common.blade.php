@@ -33,11 +33,11 @@
     @yield('addjsHEAD')
 </head>
 <body>
-@yield('header')
+@include('layouts.header')
 <div id="app">
     @yield('content')
 </div>
-@yield('footer')
+@include('layouts.footer')
 <script src="{{asset('js/app.js')}}"></script>
 @yield('addjs')
 </body>

@@ -16,16 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 
-
 // ユーザー
 Route::namespace('User')->prefix('user')->name('user.')->group(function () {
 
     // ログイン認証関連
     Auth::routes([
-        'login'=>true,
-        'register' => true,
-        'reset' => false,
-        'verify' => false
+        'login'     =>  true,
+        'register'  =>  true,
+        'reset'     =>  false,
+        'verify'    =>  true,
     ]);
 
     // ログイン認証後
@@ -42,10 +41,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
     // ログイン認証関連
     Auth::routes([
-        'login' => true,
-        'register' => true,
-        'reset' => false,
-        'verify' => true
+        'login'     => true,
+        'register'  => true,
+        'reset'     => false,
+        'verify'    => true
     ]);
 
     // ログイン認証後
@@ -70,10 +69,10 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
 
     // ログイン認証関連
     Auth::routes([
-        'login' => true,
-        'register' => false,
-        'reset' => false,
-        'verify' => false
+        'login'     => true,
+        'register'  => false,
+        'reset'     => false,
+        'verify'    => false
     ]);
 
     // ログイン認証後

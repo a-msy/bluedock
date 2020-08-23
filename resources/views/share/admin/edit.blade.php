@@ -1,19 +1,12 @@
 @section('addjsHEAD')
     <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
+@endsection
+@section('addjs')
+    <script src="{{asset('ckeditor/adapters/jquery.js')}}"></script>
     <script type="text/javascript">
         CKEDITOR.config.customConfig = '/ckeditor/adminconfig.js';
         CKEDITOR.replace('profile');
     </script>
-@endsection
-@section('addjs')
-    <script src="{{asset('ckeditor/adapters/jquery.js')}}"></script>
-@endsection
-@section('addcss')
-{{--    <style>--}}
-{{--        #cke_19, #cke_25, #cke_32 {--}}
-{{--            display: none--}}
-{{--        }--}}
-{{--    </style>--}}
 @endsection
 <section class="container">
     <div class="accordion" id="accordion-4">
@@ -89,6 +82,7 @@
     </div>
     <form action="{{$profile_action}}" method="POST">
         @csrf
-        <textarea id="profile" class="ckeditor" name="profile"></textarea>
+        <textarea id="profile" class="ckeditor" name="profile">{{$data->profile}}</textarea>
+        <button type="submit" class="btn btn-primary">保存</button>
     </form>
 </section>

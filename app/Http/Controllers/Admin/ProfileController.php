@@ -65,4 +65,15 @@ class ProfileController extends Controller
             return redirect(route('admin.profile.edit'))->with('error','背景画像を保存できませんでした');
         }
     }
+
+    public function Update(Request $request){
+        $request->validate([
+            'background' => 'nullable|max:65535',
+        ]);
+        if(Admin::where('id',Auth::guard('admin')->id())->update(['profile'=>$request->profile])){
+            return redirect(route('admin.profile.edit'))->with('success','プロフィールを保存しました');
+        }else{
+            return redirect(route('admin.profile.edit'))->with('error','プロフィールを保存できませんでした');
+        }
+    }
 }
