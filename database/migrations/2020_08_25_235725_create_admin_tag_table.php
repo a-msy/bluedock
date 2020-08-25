@@ -13,7 +13,7 @@ class CreateAdminTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('article_admin', function (Blueprint $table) {
+        Schema::create('article_admins', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('admin_id');
             $table->bigInteger('article_id');
@@ -28,6 +28,6 @@ class CreateAdminTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admin_tag');
+        Schema::dropIfExists('article_admins');
     }
 }

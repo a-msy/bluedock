@@ -10,4 +10,6 @@ class Article_Admin extends Model
     protected $fillable = [
         'article_id','admin_id'
     ];
+
+    protected $table = "article_admins";
 }

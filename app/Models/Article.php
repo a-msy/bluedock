@@ -17,6 +17,6 @@ class Article extends Model
     }
     public function admins()
     {
-        return $this->belongsToMany('App\Models\Article_Admin','article_admin');
+        return $this->belongsToMany('App\Models\Admin','article_admins');
     }
 }

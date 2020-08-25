@@ -26,6 +26,17 @@
             }
         });
     </script>
+    <script>
+        $.ajax({
+            url: '{{route('api.admin_tag')}}',
+            dataType: 'json',
+            success: function (data) {
+                $('#admin-input').tagit({
+                    availableTags: data
+                })
+            }
+        });
+    </script>
 @endsection
 @section('addcss')
     <link rel="stylesheet" href="{{asset('css/jquery-ui.min.css')}}">
@@ -71,11 +82,11 @@
                     </div>
                     <div class="form-group">
                         <label>タグ（タグ一覧にないタグは保存されません）</label>
-                        <input type="text" @isset($article) value=" @foreach($article->tags as $tag) {{$tag->name}}, @endforeach " @endisset name="tags" id="tag-input">
+                        <input type="text" @isset($article) value=" @foreach($article->tags as $tag) {{$tag->name.'%'.$tag->id}}, @endforeach " @endisset name="tags" id="tag-input">
                     </div>
                     <div class="form-group">
-                        <label>アーティストタグ（登録されていないは保存されません）</label>
-                        <input type="text" @isset($article) value=" @foreach($article->tags as $tag) {{$tag->name}}, @endforeach " @endisset name="tags" id="tag-input">
+                        <label>アーティストタグ（登録されていないアーティストは保存されません）</label>
+                        <input type="text" @isset($article) value=" @foreach($article->admins as $admin) {{$admin->name.'%'.$admin->id}}, @endforeach " @endisset name="admins" id="admin-input">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-info">保存</button>
