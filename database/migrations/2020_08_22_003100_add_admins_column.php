@@ -24,7 +24,7 @@ class AddAdminsColumn extends Migration
             $table->string('eyecatch')->nullable();
             $table->string('background')->nullable();
             $table->string('logo')->nullable();
-
+            $table->string('katakana')->nullable();
         });
     }
 

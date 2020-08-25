@@ -103,5 +103,16 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
             Route::post('create', 'TagController@create')->name('create');
         });
 
+        Route::prefix('schedule')->name('schedule.')->group(function(){
+            Route::get('index','ScheduleController@index')->name('index');
+        });
+
+        Route::prefix('event')->name('event.')->group(function(){
+            Route::get('index','EventController@index')->name('index');
+            Route::get('create','EventController@create')->name('create');
+            Route::post('save','EventController@save')->name('save');
+            Route::post('invalid','EventController@invalid')->name('invalid');
+        });
+
     });
 });
