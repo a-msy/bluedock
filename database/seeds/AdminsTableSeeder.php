@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -21,5 +22,6 @@ class AdminsTableSeeder extends Seeder
             'password'          => Hash::make('12345678'),
             'remember_token'    => Str::random(10),
         ]);
+        factory(Admin::class, 30)->create();
     }
 }

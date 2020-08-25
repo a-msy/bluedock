@@ -100,6 +100,7 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
 
         Route::prefix('tag')->name('tag.')->group(function () {
             Route::get('index', 'TagController@index')->name('index');
+            Route::get('admins','AdminController@AdminTag')->name('admins');
             Route::post('create', 'TagController@create')->name('create');
         });
 

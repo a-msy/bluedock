@@ -60,6 +60,7 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>記事タイプ</label>
                         <select name="type" class="form-control">
                             @foreach(config('const.ArticleTYPE') as $key=>$type)
                                 <option value="{{$key}}"
@@ -70,6 +71,10 @@
                     </div>
                     <div class="form-group">
                         <label>タグ（タグ一覧にないタグは保存されません）</label>
+                        <input type="text" @isset($article) value=" @foreach($article->tags as $tag) {{$tag->name}}, @endforeach " @endisset name="tags" id="tag-input">
+                    </div>
+                    <div class="form-group">
+                        <label>アーティストタグ（登録されていないは保存されません）</label>
                         <input type="text" @isset($article) value=" @foreach($article->tags as $tag) {{$tag->name}}, @endforeach " @endisset name="tags" id="tag-input">
                     </div>
                     <div class="form-group">
