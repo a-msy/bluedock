@@ -88,11 +88,11 @@
         <input type="hidden" name="id" value="{{$data->id}}">
         <div class="form-group">
             <label>バンド名</label>
-            <input class="form-control" value="{{$admin->name}}" name="name" required>
+            <input class="form-control" value="{{$data->name}}" name="name" required>
         </div>
         <div class="form-group">
             <label>メールアドレス</label>
-            <input class="form-control" value="{{$admin->email}}" name="email" required>
+            <input class="form-control" value="{{$data->email}}" name="email" required>
         </div>
         <div class="form-group">
             <label>プロフィール</label>

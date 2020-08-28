@@ -18,7 +18,10 @@
         <a href="{{route('master.admin.index')}}">アーティスト一覧</a>
     </li>
     <li>
-        <a href="">イベント一覧</a>
+        <a href="">ライブハウス追加</a>
+    </li>
+    <li>
+        <a href="">イベント追加</a>
     </li>
     <li>
         <a href="">スケジュール</a>
