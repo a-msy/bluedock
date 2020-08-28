@@ -1,0 +1,10 @@
+@extends('layouts.master_common')
+@section('content')
+    @include('share.admin.edit',[
+    'data'=>$admin,
+    'profile_action'=>route('master.admin.store'),
+    'logo_action'=>route('master.admin.logo'),
+    'background_action'=>route('master.admin.background'),
+    'eyecatch_action'=>route('master.admin.eyecatch')
+    ])
+@endsection

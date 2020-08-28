@@ -23,13 +23,12 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
     Auth::routes([
         'login'     =>  true,
         'register'  =>  true,
-        'reset'     =>  false,
+        'reset'     =>  true,
         'verify'    =>  true,
     ]);
 
     // ログイン認証後
     Route::middleware('auth:user')->group(function () {
-
         // TOPページ
         Route::resource('home', 'HomeController', ['only' => 'index']);
 
@@ -43,7 +42,7 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Auth::routes([
         'login'     => true,
         'register'  => true,
-        'reset'     => false,
+        'reset'     => true,
         'verify'    => true
     ]);
 
@@ -80,6 +79,7 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
 
         // TOPページ
         Route::resource('home', 'HomeController', ['only' => 'index']);
+
         Route::prefix('picture')->name('picture.')->group(function () {
             Route::get('input', 'PictureController@input')->name('input');
             Route::post('upload', 'PictureController@upload')->name('upload');
@@ -87,8 +87,19 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
             Route::get('index', 'PictureController@index')->name('index');
             Route::post('edit/alt', 'PictureController@editAlt')->name('edit.alt');
         });
+
         Route::prefix('lfm')->name('lfm.')->group(function () {
             \UniSharp\LaravelFilemanager\Lfm::routes();
+        });
+
+        Route::resource('admin', 'AdminController')->only([
+            'index', 'show', 'edit', 'store'
+        ]);
+
+        Route::prefix('admin')->name('admin.')->group(function(){
+            Route::post('eyecatch', 'AdminController@UploadEyecatch')->name('eyecatch');
+            Route::post('background', 'AdminController@UploadBackground')->name('background');
+            Route::post('logo', 'AdminController@UploadLogo')->name('logo');
         });
 
         Route::prefix('article')->name('article.')->group(function () {
@@ -103,16 +114,16 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
             Route::post('create', 'TagController@create')->name('create');
         });
 
-        Route::prefix('schedule')->name('schedule.')->group(function(){
-            Route::get('index','ScheduleController@index')->name('index');
-        });
-
-        Route::prefix('event')->name('event.')->group(function(){
-            Route::get('index','EventController@index')->name('index');
-            Route::get('create','EventController@create')->name('create');
-            Route::post('save','EventController@save')->name('save');
-            Route::post('invalid','EventController@invalid')->name('invalid');
-        });
+//        Route::prefix('schedule')->name('schedule.')->group(function(){
+//            Route::get('index','ScheduleController@index')->name('index');
+//        });
+//
+//        Route::prefix('event')->name('event.')->group(function(){
+//            Route::get('index','EventController@index')->name('index');
+//            Route::get('create','EventController@create')->name('create');
+//            Route::post('save','EventController@save')->name('save');
+//            Route::post('invalid','EventController@invalid')->name('invalid');
+//        });
 
     });
 });

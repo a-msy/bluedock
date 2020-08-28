@@ -15,7 +15,7 @@
         <a href="{{route('master.tag.index')}}">タグ一覧</a>
     </li>
     <li>
-        <a href="">アーティスト一覧</a>
+        <a href="{{route('master.admin.index')}}">アーティスト一覧</a>
     </li>
     <li>
         <a href="">イベント一覧</a>

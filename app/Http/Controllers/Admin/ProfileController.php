@@ -68,9 +68,23 @@ class ProfileController extends Controller
 
     public function Update(Request $request){
         $request->validate([
-            'background' => 'nullable|max:65535',
+            'profile' => 'nullable|max:65535',
+            'name'=>'required|max:200',
+            'email'=>'required|unique:users|email',
+            'website'=>'nullable',
+            'twitter'=>'nullable',
+            'facebook'=>'nullable',
+            'instagram'=>'nullable',
         ]);
-        if(Admin::where('id',Auth::guard('admin')->id())->update(['profile'=>$request->profile])){
+        if(Admin::where('id',Auth::guard('admin')->id())->update([
+            'profile'=>$request->profile,
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'website'=>$request->website,
+            'Twitter'=>$request->twitter,
+            'Instagram'=>$request->instagram,
+            'Facebook'=>$request->facebook
+            ])){
             return redirect(route('admin.profile.edit'))->with('success','プロフィールを保存しました');
         }else{
             return redirect(route('admin.profile.edit'))->with('error','プロフィールを保存できませんでした');

@@ -23,6 +23,7 @@
                 <div class="card-body">
                     <form class="mb-3" action="{{$logo_action}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" value="{{$data->id}}">
                         <div>
                             <input type="file" name="logo" class="form-control" required>
                             <p class="small">*jpg,png形式 4096KB以下</p>
@@ -46,6 +47,7 @@
                 <div class="card-body">
                     <form action="{{$eyecatch_action}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" value="{{$data->id}}">
                         <div>
                             <input type="file" name="eyecatch" class="form-control" required>
                             <p class="small">*jpg,png形式 4096KB以下</p>
@@ -69,6 +71,7 @@
                 <div class="card-body">
                     <form action="{{$background_action}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" value="{{$data->id}}">
                         <div>
                             <input type="file" name="background" class="form-control" required>
                             <p class="small">*jpg,png形式 4096KB以下</p>
@@ -80,9 +83,37 @@
             </div>
         </div>
     </div>
-    <form action="{{$profile_action}}" method="POST">
+    <form action="{{$profile_action}}" method="POST" class="mt-3">
         @csrf
-        <textarea id="profile" class="ckeditor" name="profile">{{$data->profile}}</textarea>
+        <input type="hidden" name="id" value="{{$data->id}}">
+        <div class="form-group">
+            <label>バンド名</label>
+            <input class="form-control" value="{{$admin->name}}" name="name" required>
+        </div>
+        <div class="form-group">
+            <label>メールアドレス</label>
+            <input class="form-control" value="{{$admin->email}}" name="email" required>
+        </div>
+        <div class="form-group">
+            <label>プロフィール</label>
+            <textarea id="profile" class="ckeditor" name="profile">{{$data->profile}}</textarea>
+        </div>
+        <div class="form-group">
+            <label>ウェブサイト</label>
+            <input class="form-control" name="website" value="{{$data->website}}" placeholder="https://example.com">
+        </div>
+        <div class="form-group">
+            <label>Twitter</label>
+            <input class="form-control" name="twitter" value="{{$data->Twitter}}" placeholder="@twitter_jp">
+        </div>
+        <div class="form-group">
+            <label>Instagram</label>
+            <input class="form-control" name="instagram" value="{{$data->Instagram}}" placeholder="in_stagram">
+        </div>
+        <div class="form-group">
+            <label>Facebook</label>
+            <input class="form-control" name="facebook" value="{{$data->Facebook}}" placeholder="face_book">
+        </div>
         <button type="submit" class="btn btn-primary">保存</button>
     </form>
 </section>
