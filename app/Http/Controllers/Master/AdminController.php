@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\MyTools\Picture;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -104,20 +105,12 @@ class AdminController extends Controller
         //
     }
 
-    public function Resize($id,$avatar,$width,$height,$path){
-        $filename = $id . '.' . $avatar->getClientOriginalExtension();
-        Image::make($avatar)->resize($width, $height, function($constraint){
-            $constraint->aspectRatio();
-        })->save( public_path($path . $filename ) );
-        return $filename;
-    }
-
     public function UploadLogo(Request $request){
         $request->validate([
             'logo' => 'required|file|image|max:4096',
         ]);
 
-        $filename = $this->Resize($request->id,$request->file('logo'),500,null,'/storage/img/artist/logo/');
+        $filename = Picture::Resize($request->id,$request->file('logo'),500,null,'/storage/img/artist/logo/');
 
         if(Admin::where('id',$request->id)->update(['logo'=>$filename])){
             return redirect(route('master.admin.edit',['admin'=>$request->id]))->with('success','ロゴ画像を保存しました');
@@ -130,7 +123,7 @@ class AdminController extends Controller
             'eyecatch' => 'required|file|image|max:4096',
         ]);
 
-        $filename = $this->Resize($request->id,$request->file('eyecatch'),1000,null,'/storage/img/artist/eyecatch/');
+        $filename = Picture::Resize($request->id,$request->file('eyecatch'),1000,null,'/storage/img/artist/eyecatch/');
 
         if(Admin::where('id',$request->id)->update(['eyecatch'=>$filename])){
             return redirect(route('master.admin.edit',['admin'=>$request->id]))->with('success','アイキャッチ画像を保存しました');
@@ -143,7 +136,7 @@ class AdminController extends Controller
             'background' => 'required|file|image|max:4096',
         ]);
 
-        $filename = $this->Resize($request->id,$request->file('background'),1920,null,'/storage/img/artist/background/');
+        $filename = Picture::Resize($request->id,$request->file('background'),1920,null,'/storage/img/artist/background/');
 
         if(Admin::where('id',$request->id)->update(['background'=>$filename])){
             return redirect(route('master.admin.edit',['admin'=>$request->id]))->with('success','背景画像を保存しました');

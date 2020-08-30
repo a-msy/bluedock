@@ -125,5 +125,12 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
             Route::post('invalid','EventController@invalid')->name('invalid');
         });
 
+        Route::prefix('house')->name('house.')->group(function(){
+            Route::get('index','HouseController@index')->name('index');
+            Route::post('store','HouseController@store')->name('store');
+            Route::get('edit/{id}','HouseController@edit')->name('edit');
+            Route::post('picstore','HouseController@picstore')->name('picstore');
+        });
+
     });
 });
