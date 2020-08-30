@@ -9,7 +9,6 @@
  */
 
 return [
-    'base_directory'=>'http://127.0.0.1:8000/storage/img/article_pictures',
     /*
     |--------------------------------------------------------------------------
     | Routing
@@ -36,7 +35,9 @@ return [
     // Ex: The private folder of user will be named as the user id.
     'private_folder_name'      => UniSharp\LaravelFilemanager\Handlers\ConfigHandler::class,
 
-    'allow_shared_folder'      => false,
+    'allow_shared_folder'      => true,
+
+    'shared_folder_name'       => 'shares',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +47,7 @@ return [
 
     'folder_categories'        => [
         'file'  => [
-            'folder_name'  => 'article_pictures',
+            'folder_name'  => 'img',
             'startup_view' => 'grid',
             'max_size'     => 50000, // size in KB
             'valid_mime'   => [
@@ -55,20 +56,6 @@ return [
                 'image/png',
                 'image/gif',
                 'image/svg+xml',
-            ],
-        ],
-        'image' => [
-            'folder_name'  => 'photos',
-            'startup_view' => 'list',
-            'max_size'     => 50000, // size in KB
-            'valid_mime'   => [
-                'image/jpeg',
-                'image/pjpeg',
-                'image/png',
-                'image/gif',
-                'image/svg+xml',
-                'application/pdf',
-                'text/plain',
             ],
         ],
     ],
@@ -80,7 +67,7 @@ return [
      */
 
     'paginator' => [
-        'perPage' => 100,
+        'perPage' => 30,
     ],
 
     /*
@@ -89,7 +76,7 @@ return [
     |--------------------------------------------------------------------------
      */
 
-    'disk'                     => 'img',
+    'disk'                     => 'public',
 
     'rename_file'              => false,
 
@@ -115,7 +102,7 @@ return [
     // If true, image thumbnails would be created during upload
     'should_create_thumbnails' => true,
 
-    'thumb_folder_name'        => 'thumb',
+    'thumb_folder_name'        => 'thumbs',
 
     // Create thumbnails automatically only for listed types.
     'raster_mimetypes'         => [

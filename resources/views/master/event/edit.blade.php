@@ -10,7 +10,7 @@
 @section('addjs')
     <script src="{{asset('ckeditor/adapters/jquery.js')}}"></script>
     <script type="text/javascript">
-        CKEDITOR.replace('comment',{
+        CKEDITOR.replace('comment', {
             filebrowserBrowseUrl: '{{url('master/lfm')}}',
             filebrowserImageBrowseUrl: '{{url('master/lfm')}}',
         });
@@ -34,12 +34,66 @@
 @endsection
 @section('content')
     <section class="container">
+        @isset($event)
+            <div class="accordion" id="accordion-4">
+                <div class="card">
+                    <div class="card-header" id="header-4a">
+                        <button class="btn btn-link" type="button"
+                                data-toggle="collapse" data-target="#card-4a"
+                                aria-expanded="true" aria-controls="card-4a">
+                            フライヤー画像
+                        </button>
+                    </div>
+                    <div id="card-4a" class="collapse"
+                         aria-labelledby="header-4a" data-parent="#accordion-4">
+                        <div class="card-body">
+                            <img src="{{asset('storage/img/shares/event/flyer/'.$event->flyer)}}">
+                            <form class="mb-3" action="{{route('master.event.flyer')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="id" value="{{$event->id}}">
+                                <div>
+                                    <input type="file" name="flyer" class="form-control" required>
+                                    <p class="small">*jpg,png形式 4096KB以下</p>
+                                    <p class="small">*画像はリサイズされます</p>
+                                </div>
+                                <button type="submit" class="btn btn-primary">アップロード</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="header-4b">
+                        <button class="btn btn-link" type="button"
+                                data-toggle="collapse" data-target="#card-4b"
+                                aria-expanded="false" aria-controls="card-4b">
+                            アイキャッチ画像
+                        </button>
+                    </div>
+                    <div id="card-4b" class="collapse"
+                         aria-labelledby="header-4b" data-parent="#accordion-4">
+                        <div class="card-body">
+                            <img src="{{asset('storage/img/shares/event/eyecatch/'.$event->eyecatch)}}">
+                            <form action="{{route('master.event.eyecatch')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="id" value="{{$event->id}}">
+                                <div>
+                                    <input type="file" name="eyecatch" class="form-control" required>
+                                    <p class="small">*jpg,png形式 4096KB以下</p>
+                                    <p class="small">*画像はリサイズされます</p>
+                                </div>
+                                <button type="submit" class="btn btn-primary">アップロード</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endisset
         <form action="{{route('master.event.store')}}" method="POST" class="mt-3">
             @csrf
             <h2>イベント情報</h2>
 
             @isset($event)
-            <input type="hidden" name="id" value="{{$event->id}}">
+                <input type="hidden" name="id" value="{{$event->id}}">
             @endisset
 
             <div class="form-group">
@@ -51,7 +105,8 @@
                 <div class="input-group date" id="when" data-target-input="nearest">
                     <div class="input-group-append" data-target="#when" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        <input type="text" class="form-control datetimepicker-input" data-target="#when" @isset($event) value="{{$event->when}}" @endisset>
+                        <input type="text" class="form-control datetimepicker-input" data-target="#when" name="when"
+                               @isset($event) value="{{$event->when}}" @endisset>
                     </div>
                 </div>
             </div>
@@ -60,7 +115,7 @@
                 <select name="where" class="form-control">
                     @foreach($admins as $admin)
                         <option value="{{$admin->id}}"
-                        @isset($event) @if($admin->id == $event->where) selected @endif @endisset>{{$admin->name}}</option>
+                                @isset($event) @if($admin->id == $event->where) selected @endif @endisset>{{$admin->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -73,7 +128,8 @@
                 <div class="input-group date" id="open" data-target-input="nearest">
                     <div class="input-group-append" data-target="#open" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        <input type="text" class="form-control datetimepicker-input" data-target="#open" @isset($event) value="{{$event->open}}" @endisset>
+                        <input type="text" class="form-control datetimepicker-input" data-target="#open" name="open"
+                               @isset($event) value="{{$event->open}}" @endisset>
                     </div>
                 </div>
             </div>
@@ -82,7 +138,8 @@
                 <div class="input-group date" id="start" data-target-input="nearest">
                     <div class="input-group-append" data-target="#start" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        <input type="text" class="form-control datetimepicker-input" data-target="#start" @isset($event) value="{{$event->start}}" @endisset>
+                        <input type="text" class="form-control datetimepicker-input" data-target="#start" name="start"
+                               @isset($event) value="{{$event->start}}" @endisset>
                     </div>
                 </div>
             </div>

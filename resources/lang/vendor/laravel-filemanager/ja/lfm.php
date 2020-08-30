@@ -36,6 +36,7 @@ return [
     'message-name' => 'フォルダ名',
     'message-rename' => 'ファイル名変更',
     'message-extension_not_found' => 'イメージの切り抜き、サイズ変更、およびサムネイルを作成するには、gdまたはimagick拡張機能をインストールしてください',
+    'menu-multiple'=>'選択',
 
     'error-rename' => 'すでに使用されているファイル名です!',
     'error-file-name' => 'ファイル名は空にできません!',
@@ -62,6 +63,7 @@ return [
     'btn-cancel' => 'キャンセル',
     'btn-resize' => 'リサイズ',
     'btn-confirm' => 'はい',
+    'btn-open'=>'開く',
 
     'resize-ratio' => '比率:',
     'resize-scaled' => 'イメージの縮尺:',

@@ -1,5 +1,8 @@
 <ul>
     <li>
+        <a href="{{url('master/lfm')}}">ファイルマネージャ</a>
+    </li>
+    <li>
         <a href="{{route('master.picture.index')}}">記事画像一覧</a>
     </li>
     <li>
