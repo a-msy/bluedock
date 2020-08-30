@@ -21,6 +21,7 @@
             <div id="card-4a" class="collapse"
                  aria-labelledby="header-4a" data-parent="#accordion-4">
                 <div class="card-body">
+                    <img src="{{asset('storage/img/shares/artist/logo/'.$data->logo)}}">
                     <form class="mb-3" action="{{$logo_action}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="{{$data->id}}">
@@ -45,6 +46,7 @@
             <div id="card-4b" class="collapse"
                  aria-labelledby="header-4b" data-parent="#accordion-4">
                 <div class="card-body">
+                    <img src="{{asset('storage/img/shares/artist/eyecatch/'.$data->eyecatch)}}">
                     <form action="{{$eyecatch_action}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="{{$data->id}}">
@@ -69,6 +71,7 @@
             <div id="card-4c" class="collapse"
                  aria-labelledby="header-4c" data-parent="#accordion-4">
                 <div class="card-body">
+                    <img src="{{asset('storage/img/shares/artist/background/'.$data->background)}}">
                     <form action="{{$background_action}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="{{$data->id}}">

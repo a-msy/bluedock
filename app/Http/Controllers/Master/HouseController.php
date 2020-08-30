@@ -24,7 +24,7 @@ class HouseController extends Controller
             'picture' => 'required|file|image|max:4096',
         ]);
 
-        $filename = Picture::Resize($request->id,$request->file('picture'),1000,null,'/storage/img/house/');
+        $filename = Picture::Resize($request->id,$request->file('picture'),1000,null,'/storage/img/shares/house/');
 
         if(House::where('id',$request->id)->update(['picture'=>$filename])){
             return redirect(route('master.house.edit',['id'=>$request->id]))->with('success','画像を保存しました');
@@ -37,10 +37,11 @@ class HouseController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'contact' => 'required|max:255',
-            'addr' => 'nullable|max:255',
+            'addr' => 'required|max:255',
             'access'=>'nullable|max:255',
             'website'=>'nullable|max:255',
-            'parking'=>'nullable|digits_between:0,1'
+            'parking'=>'nullable|digits_between:0,1',
+            'capacity'=>'nullable|'
         ]);
 
         $house = House::updateOrCreate(

@@ -110,7 +110,7 @@ class AdminController extends Controller
             'logo' => 'required|file|image|max:4096',
         ]);
 
-        $filename = Picture::Resize($request->id,$request->file('logo'),500,null,'/storage/img/artist/logo/');
+        $filename = Picture::Resize($request->id,$request->file('logo'),500,null,'/storage/img/shares/artist/logo/');
 
         if(Admin::where('id',$request->id)->update(['logo'=>$filename])){
             return redirect(route('master.admin.edit',['admin'=>$request->id]))->with('success','ロゴ画像を保存しました');
@@ -123,7 +123,7 @@ class AdminController extends Controller
             'eyecatch' => 'required|file|image|max:4096',
         ]);
 
-        $filename = Picture::Resize($request->id,$request->file('eyecatch'),1000,null,'/storage/img/artist/eyecatch/');
+        $filename = Picture::Resize($request->id,$request->file('eyecatch'),1000,null,'/storage/img/shares/artist/eyecatch/');
 
         if(Admin::where('id',$request->id)->update(['eyecatch'=>$filename])){
             return redirect(route('master.admin.edit',['admin'=>$request->id]))->with('success','アイキャッチ画像を保存しました');
@@ -136,7 +136,7 @@ class AdminController extends Controller
             'background' => 'required|file|image|max:4096',
         ]);
 
-        $filename = Picture::Resize($request->id,$request->file('background'),1920,null,'/storage/img/artist/background/');
+        $filename = Picture::Resize($request->id,$request->file('background'),1920,null,'/storage/img/shares/artist/background/');
 
         if(Admin::where('id',$request->id)->update(['background'=>$filename])){
             return redirect(route('master.admin.edit',['admin'=>$request->id]))->with('success','背景画像を保存しました');

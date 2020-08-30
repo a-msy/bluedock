@@ -120,9 +120,10 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
 
         Route::prefix('event')->name('event.')->group(function(){
             Route::get('index','EventController@index')->name('index');
-            Route::get('create','EventController@create')->name('create');
-            Route::post('save','EventController@save')->name('save');
-            Route::post('invalid','EventController@invalid')->name('invalid');
+            Route::get('edit/{id}','EventController@edit')->name('edit');
+            Route::post('store','EventController@store')->name('store');
+            Route::post('eyecatch','EventController@eyecatch')->name('eyecatch');
+            Route::post('flyer','EventController@flyer')->name('flyer');
         });
 
         Route::prefix('house')->name('house.')->group(function(){
