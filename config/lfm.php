@@ -26,14 +26,14 @@ return [
     |
      */
 
-    'allow_private_folder'     => false,
+    'allow_private_folder'     => true,
 
     // Flexible way to customize client folders accessibility
     // If you want to customize client folders, publish tag="lfm_handler"
-    // Then you can rewrite userField function in App\Handler\ConfigHandler class
+    // Then you can rewrite userField function in UniSharp\LaravelFilemanager\Handlers\ConfigHandler::class class
     // And set 'user_field' to App\Handler\ConfigHandler::class
     // Ex: The private folder of user will be named as the user id.
-    'private_folder_name'      => UniSharp\LaravelFilemanager\Handlers\ConfigHandler::class,
+    'private_folder_name'      => 'article_pictures',
 
     'allow_shared_folder'      => true,
 
@@ -67,7 +67,7 @@ return [
      */
 
     'paginator' => [
-        'perPage' => 30,
+        'perPage' => 300,
     ],
 
     /*

@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Article_Admin;
 use App\Models\Event;
+use App\Models\Event_Admin;
 use App\Models\House;
 use App\MyTools\Picture;
+use App\MyTools\TagUtils;
 use Illuminate\Http\Request;
 
 /**
@@ -88,7 +91,20 @@ class EventController extends Controller
                 'adv' => $request->adv,
             ]
         );
+
         if ($event) {
+
+            $admin_numbers = TagUtils::Tagtrim($request->admins);
+            $event_admins = Event_Admin::where('event_id', $event->id)->orderBy('admin_id', 'desc')->get()->pluck('admin_id')->toArray();
+            $create_event_admins = array_diff($admin_numbers, $event_admins);//新たに挿入するタグ
+            foreach ($create_event_admins as $create_event_admin) {
+                Event_Admin::updateOrCreate(['event_id' => $event->id, 'admin_id' => $create_event_admin]);
+            }
+            $delete_event_admins = array_diff($event_admins, $admin_numbers);//外されたタグ
+            foreach ($delete_event_admins as $delete_event_admin) {
+                Event_Admin::where(['event_id' => $event->id, 'admin_id' => $delete_event_admin])->delete();
+            }
+
             return redirect(route('master.event.edit', ['id' => $event->id]))->with('success', '保存しました');
         } else {
             return redirect(route('master.event.index'))->with('error', '保存できませんでした');

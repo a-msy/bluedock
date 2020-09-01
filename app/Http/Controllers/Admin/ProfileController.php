@@ -75,6 +75,7 @@ class ProfileController extends Controller
             'twitter'=>'nullable',
             'facebook'=>'nullable',
             'instagram'=>'nullable',
+            'katakana'=>'nullable|max:200|katakana',
         ]);
         if(Admin::where('id',Auth::guard('admin')->id())->update([
             'profile'=>$request->profile,
@@ -83,7 +84,8 @@ class ProfileController extends Controller
             'website'=>$request->website,
             'Twitter'=>$request->twitter,
             'Instagram'=>$request->instagram,
-            'Facebook'=>$request->facebook
+            'Facebook'=>$request->facebook,
+            'katakana'=>$request->katakana,
             ])){
             return redirect(route('admin.profile.edit'))->with('success','プロフィールを保存しました');
         }else{

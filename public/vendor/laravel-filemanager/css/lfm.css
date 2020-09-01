@@ -395,3 +395,7 @@ time {
     white-space: nowrap;
     content: attr(data-label);
 }
+
+.collapse > .navbar-nav > .nav-item > .nav-link > .fa-trash,span,.fa-edit,.fa-crop,.fa-resize{
+    display: none !important;
+}

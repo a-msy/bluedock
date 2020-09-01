@@ -94,6 +94,10 @@
             <input class="form-control" value="{{$data->name}}" name="name" required>
         </div>
         <div class="form-group">
+            <label>ヨミガナ（全角カタカナ）</label>
+            <input class="form-control" value="{{$data->katakana}}" name="katakana" placeholder="全角カタカナで入力してください">
+        </div>
+        <div class="form-group">
             <label>メールアドレス</label>
             <input class="form-control" value="{{$data->email}}" name="email" required>
         </div>

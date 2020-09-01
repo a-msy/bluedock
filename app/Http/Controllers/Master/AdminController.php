@@ -48,6 +48,7 @@ class AdminController extends Controller
             'twitter'=>'nullable',
             'facebook'=>'nullable',
             'instagram'=>'nullable',
+            'katakana'=>'nullable|max:200|katakana',
         ]);
         if(Admin::where('id',$request->id)->update([
             'profile'=>$request->profile,
@@ -56,8 +57,10 @@ class AdminController extends Controller
             'website'=>$request->website,
             'Twitter'=>$request->twitter,
             'Instagram'=>$request->instagram,
-            'Facebook'=>$request->facebook]
-        )){
+            'Facebook'=>$request->facebook,
+            'katakana'=>$request->katakana,
+            ]))
+        {
             return redirect(route('master.admin.edit',['admin'=>$request->id]))->with('success','プロフィールを保存しました');
         }else{
             return redirect(route('master.admin.edit',['admin'=>$request->id]))->with('error','プロフィールを保存できませんでした');

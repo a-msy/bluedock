@@ -31,6 +31,24 @@
             });
         });
     </script>
+    <script src="{{asset('js/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('js/tag-it.min.js')}}"></script>
+    <script>
+        $.ajax({
+            url: '{{route('api.admin_tag')}}',
+            dataType: 'json',
+            success: function (data) {
+                $('#admin-input').tagit({
+                    availableTags: data
+                })
+            }
+        });
+    </script>
+@endsection
+@section('addcss')
+    <link rel="stylesheet" href="{{asset('css/jquery-ui.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/tagit.ui-zendesk.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery.tagit.css')}}">
 @endsection
 @section('content')
     <section class="container">
@@ -122,6 +140,10 @@
             <div class="form-group">
                 <label>詳細</label>
                 <textarea name="comment" id="comment">@isset($event){{$event->comment}}@endisset</textarea>
+            </div>
+            <div class="form-group">
+                <label>出演アーティスト</label>
+                <input type="text" @isset($event) value=" @foreach($event->admins as $tag) {{$tag->name.'%'.$tag->id}}, @endforeach " @endisset name="admins" id="admin-input">
             </div>
             <div class="form-group">
                 <label>OPEN</label>

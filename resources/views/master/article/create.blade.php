@@ -3,7 +3,7 @@
     <script src="{{asset('vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
     <script>
         var route_prefix = "{{url('master/lfm')}}";
-        $('#lfm').filemanager('image', '/storage/img', {prefix: route_prefix});
+        $('#lfm').filemanager('image', '/storage/img/', {prefix: route_prefix});
     </script>
     <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
     <script src="{{asset('ckeditor/adapters/jquery.js')}}"></script>

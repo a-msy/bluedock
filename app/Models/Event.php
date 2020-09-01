@@ -11,4 +11,9 @@ class Event extends Model
         'title', 'when', 'where', 'comment', 'eyecatch', 'flyer', 'open', 'start', 'door', 'adv'
     ];
     protected $dates = ['when','open','start', 'created_at', 'updated_at'];
+
+    public function admins()
+    {
+        return $this->belongsToMany('App\Models\Admin','event_admins');
+    }
 }
