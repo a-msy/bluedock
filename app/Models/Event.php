@@ -16,4 +16,7 @@ class Event extends Model
     {
         return $this->belongsToMany('App\Models\Admin','event_admins');
     }
+    public function house(){
+        return $this->belongsTo('App\Models\House','where','id');
+    }
 }

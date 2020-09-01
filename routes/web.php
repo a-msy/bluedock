@@ -16,19 +16,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::prefix('schedule')->name('schedule.')->group(function(){
-    Route::get('index','ScheduleController@index')->name('index');
+Route::prefix('schedule')->name('schedule.')->group(function () {
+    Route::get('index', 'ScheduleController@index')->name('index');
 });
+
+Route::prefix('event')->name('event.')->group(function () {
+    Route::get('index', 'EventController@index')->name('index');
+    Route::get('{id}', 'EventController@detail')->name('detail');
+});
+
+Route::prefix('article')->name('article.')->group(function () {
+   Route::get('index','ArticleController@index')->name('index');
+    Route::get('{id}', 'ArticleController@detail')->name('detail');
+});
+//admin preview, article preview, top page, house preview, 画像ランキング, 各種検索
 
 // ユーザー
 Route::namespace('User')->prefix('user')->name('user.')->group(function () {
 
     // ログイン認証関連
     Auth::routes([
-        'login'     =>  true,
-        'register'  =>  true,
-        'reset'     =>  true,
-        'verify'    =>  true,
+        'login' => true,
+        'register' => true,
+        'reset' => true,
+        'verify' => true,
     ]);
 
     // ログイン認証後
@@ -44,10 +55,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
     // ログイン認証関連
     Auth::routes([
-        'login'     => true,
-        'register'  => true,
-        'reset'     => true,
-        'verify'    => true
+        'login' => true,
+        'register' => true,
+        'reset' => true,
+        'verify' => true
     ]);
 
     // ログイン認証後
@@ -62,8 +73,8 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
                 Route::post('background', 'ProfileController@UploadBackground')->name('background');
                 Route::post('logo', 'ProfileController@UploadLogo')->name('logo');
             });
-            Route::get('edit','ProfileController@Edit')->name('edit');
-            Route::post('update','ProfileController@Update')->name('update');
+            Route::get('edit', 'ProfileController@Edit')->name('edit');
+            Route::post('update', 'ProfileController@Update')->name('update');
         });
     });
 });
@@ -72,10 +83,10 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
 
     // ログイン認証関連
     Auth::routes([
-        'login'     => true,
-        'register'  => false,
-        'reset'     => false,
-        'verify'    => false
+        'login' => true,
+        'register' => false,
+        'reset' => false,
+        'verify' => false
     ]);
 
     // ログイン認証後
@@ -100,7 +111,7 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
             'index', 'show', 'edit', 'store'
         ]);
 
-        Route::prefix('admin')->name('admin.')->group(function(){
+        Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('eyecatch', 'AdminController@UploadEyecatch')->name('eyecatch');
             Route::post('background', 'AdminController@UploadBackground')->name('background');
             Route::post('logo', 'AdminController@UploadLogo')->name('logo');
@@ -118,19 +129,19 @@ Route::namespace('Master')->prefix('master')->name('master.')->group(function ()
             Route::post('create', 'TagController@create')->name('create');
         });
 
-        Route::prefix('event')->name('event.')->group(function(){
-            Route::get('index','EventController@index')->name('index');
-            Route::get('edit/{id}','EventController@edit')->name('edit');
-            Route::post('store','EventController@store')->name('store');
-            Route::post('eyecatch','EventController@eyecatch')->name('eyecatch');
-            Route::post('flyer','EventController@flyer')->name('flyer');
+        Route::prefix('event')->name('event.')->group(function () {
+            Route::get('index', 'EventController@index')->name('index');
+            Route::get('edit/{id}', 'EventController@edit')->name('edit');
+            Route::post('store', 'EventController@store')->name('store');
+            Route::post('eyecatch', 'EventController@eyecatch')->name('eyecatch');
+            Route::post('flyer', 'EventController@flyer')->name('flyer');
         });
 
-        Route::prefix('house')->name('house.')->group(function(){
-            Route::get('index','HouseController@index')->name('index');
-            Route::post('store','HouseController@store')->name('store');
-            Route::get('edit/{id}','HouseController@edit')->name('edit');
-            Route::post('picstore','HouseController@picstore')->name('picstore');
+        Route::prefix('house')->name('house.')->group(function () {
+            Route::get('index', 'HouseController@index')->name('index');
+            Route::post('store', 'HouseController@store')->name('store');
+            Route::get('edit/{id}', 'HouseController@edit')->name('edit');
+            Route::post('picstore', 'HouseController@picstore')->name('picstore');
         });
 
     });

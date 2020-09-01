@@ -33,6 +33,6 @@
         <a href="{{route('master.event.edit',['id'=>0])}}" target="_blank" rel="noopener noreferrer">イベント追加</a>
     </li>
     <li>
-        <a href="">スケジュール</a>
+        <a href="{{route('schedule.index')}}">スケジュール</a>
     </li>
 </ul>

@@ -11,9 +11,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navmenu1">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Menu#1</a>
-                <a class="nav-item nav-link" href="#">Menu#2</a>
-                <a class="nav-item nav-link" href="#">Menu#3</a>
+                <a class="nav-item nav-link" href="{{route('event.index')}}">イベント一覧</a>
+                <a class="nav-item nav-link" href="{{route('schedule.index')}}">スケジュール</a>
+                <a class="nav-item nav-link" href="{{route('article.index')}}">記事一覧</a>
             </div>
         </div>
     </nav>

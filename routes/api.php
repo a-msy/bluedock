@@ -22,3 +22,4 @@ Route::post('ajaxupload','Master\PictureController@ajaxupload')->name('api.ajaxu
 Route::any('filemanager','Master\PictureController@filemanager')->name('api.filemanager');
 Route::any('tag_list','Master\TagController@TagList')->name('api.tag_list');
 Route::get('admin_tag','Master\AdminController@AdminTag')->name('api.admin_tag');
+Route::get('event_list','ScheduleController@eventList')->name('api.event_list');
