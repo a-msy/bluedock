@@ -26,10 +26,20 @@ Route::prefix('event')->name('event.')->group(function () {
 });
 
 Route::prefix('article')->name('article.')->group(function () {
-   Route::get('index','ArticleController@index')->name('index');
+    Route::get('index', 'ArticleController@index')->name('index');
     Route::get('{id}', 'ArticleController@detail')->name('detail');
 });
-//admin preview, article preview, top page, house preview, 画像ランキング, 各種検索
+
+Route::prefix('band')->name('admin.')->group(function () {
+   Route::get('index','AdminController@index')->name('index');
+   Route::get('{id}','AdminController@detail')->name('detail');
+});
+
+Route::prefix('house')->name('house.')->group(function () {
+    Route::get('index','HouseController@index')->name('index');
+    Route::get('{id}','HouseController@detail')->name('detail');
+});
+// top page, 画像ランキング, 各種検索
 
 // ユーザー
 Route::namespace('User')->prefix('user')->name('user.')->group(function () {

@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-dark bg-dark">
-        <a href="#" class="navbar-brand">Title</a>
+        <a href="{{route('home')}}" class="navbar-brand">Title</a>
         <button class="navbar-toggler" type="button"
                 data-toggle="collapse"
                 data-target="#navmenu1"
@@ -14,6 +14,8 @@
                 <a class="nav-item nav-link" href="{{route('event.index')}}">イベント一覧</a>
                 <a class="nav-item nav-link" href="{{route('schedule.index')}}">スケジュール</a>
                 <a class="nav-item nav-link" href="{{route('article.index')}}">記事一覧</a>
+                <a class="nav-item nav-link" href="{{route('admin.index')}}">バンド一覧</a>
+                <a class="nav-item nav-link" href="{{route('house.index')}}">ライブハウス一覧</a>
             </div>
         </div>
     </nav>
