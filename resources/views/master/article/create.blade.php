@@ -9,8 +9,8 @@
     <script src="{{asset('ckeditor/adapters/jquery.js')}}"></script>
     <script type="text/javascript">
         CKEDITOR.replace('editor1', {
-            filebrowserBrowseUrl: '{{url('master/lfm')}}',
-            filebrowserImageBrowseUrl: '{{url('master/lfm')}}',
+            {{--filebrowserBrowseUrl: '{{url('master/lfm')}}',--}}
+            {{--filebrowserImageBrowseUrl: '{{url('master/lfm')}}',--}}
         });
     </script>
     <script src="{{asset('js/jquery-ui.min.js')}}"></script>

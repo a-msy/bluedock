@@ -8,6 +8,6 @@ class Picture extends Model
 {
     //
     protected $fillable = [
-        'filename','alt'
+        'filename','alt','article_id'
     ];
 }

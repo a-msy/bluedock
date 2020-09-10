@@ -14,6 +14,14 @@
                 <label>キャプション</label>
                 <input type="text" class="form-control" name="alt" required maxlength="255">
             </div>
+            <div class="form-group">
+                <label>紐付ける記事</label>
+                <select class="form-control" name="article_id" required>
+                    @foreach($articles as $article)
+                        <option value="{{$article->id}}">{{$article->title}}</option>
+                    @endforeach
+                </select>
+            </div>
             <button class="btn btn-success">追加</button>
         </form>
     </section>

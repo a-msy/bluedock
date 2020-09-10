@@ -16,7 +16,7 @@ class PictureController extends Controller
     //
     public function input()
     {
-        return view('master.picture.input');
+        return view('master.picture.input')->with('articles',Article::get(['id','title']));
     }
 
     public function upload(Request $request)
@@ -25,6 +25,7 @@ class PictureController extends Controller
             $request->validate([
                 'image_file' => 'required|file|mimes:jpeg,bmp,png,jpg|max:2048',
                 'alt' => 'required|max:255',
+                'article_id'=>'required|integer'
             ]);
 
             $file = $request->file('image_file');
@@ -41,6 +42,7 @@ class PictureController extends Controller
             $picture = Picture::create([
                 'filename' => $filename . '.' . $file_extension,
                 'alt' => $request->alt,
+                'article_id'=>$request->article_id
             ]);
             return redirect(route('master.picture.input'))->with([
                 'success' => '画像を保存しました',
