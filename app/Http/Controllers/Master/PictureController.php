@@ -34,10 +34,10 @@ class PictureController extends Controller
 
             Image::make($file)->resize(750, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save(public_path() . '/storage/img/article_pictures/' . '/' . $filename . '.' . $file_extension);
+            })->save(public_path() . '/storage/img/article_pictures/' . $filename . '.' . $file_extension);
             Image::make($file)->resize(250, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save(public_path() . '/storage/img/article_pictures/thumb' . '/' . $filename . '.' . $file_extension);
+            })->save(public_path() . '/storage/img/article_pictures/thumb/' . $filename . '.' . $file_extension);
 
             $picture = Picture::create([
                 'filename' => $filename . '.' . $file_extension,
