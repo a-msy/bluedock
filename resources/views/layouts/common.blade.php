@@ -26,6 +26,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="shortcut icon" href="{{asset('img/favicon.ico')}}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/swiper.min.css')}}">
     <!-- Styles -->
     <link href="{{ asset('css/app.css')}}" rel="stylesheet">
     <link href="{{ asset('css/style.css?'.now())}}" rel="stylesheet">
@@ -39,6 +40,7 @@
 </div>
 @include('layouts.footer')
 <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/swiper.min.js')}}"></script>
 @yield('addjs')
 </body>
 </html>

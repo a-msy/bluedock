@@ -1,0 +1,105 @@
+:root {
+    --themecolor: #00bfdb;
+}
+
+@font-face {
+    font-family: 'SourceHanSansJP-Medium';
+    src: url('/font/SourceHanSansJP-Medium.otf') format('opentype');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN';
+    src: url('/font/din1451alt.ttf') format('truetype');
+    font-style: normal;
+}
+
+body {
+    font-size: 10px;
+    font-family: 'DIN', 'SourceHanSansJP-Medium', 'Yu Gothic UI';
+    letter-spacing: .07em;
+    background: white;
+    line-height: 1rem;
+}
+
+.container {
+    max-width: 768px !important;
+    padding: 0 !important;
+}
+
+.object-fit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.index-top {
+    height: 300px;
+}
+
+.index-top-slide h2 {
+    line-height: 2.5rem;
+    font-size: 16px;
+    bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .index-top {
+        height: 500px;
+    }
+
+    .index-top-slide h2 {
+        font-size: 20px;
+    }
+}
+
+.background-theme {
+    background-color: var(--themecolor);
+}
+
+.background-white {
+    background-color: white;
+}
+
+.section-header {
+    border-top: solid 3px var(--themecolor);
+    font-size: 20px;
+    letter-spacing: 0.3em !important;
+}
+
+.section-header p {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.line {
+    width: 100px;
+    border: solid 1px black;
+    margin: 0 auto;
+}
+
+.interview {
+    height: 200px;
+}
+
+.interview span {
+    font-size: 12px;
+    line-height: 24px;
+}
+
+@media screen and (min-width: 768px) {
+    .interview {
+        height: 350px;
+    }
+
+    .interview span {
+        font-size: 20px;
+        line-height: 40px;
+    }
+}
+
+.more{
+    font-size: 12px;
+    width:100px;
+    border: solid 1px black;
+}

@@ -25,8 +25,10 @@ class HomeController extends Controller
     public function index()
     {
         $articles = Article::all();
+        $top_articles = Article::orderBy('updated_at','desc')->take(5)->get();
         return view('home')->with([
             'articles'=>$articles,
+            'top_articles'=>$top_articles
         ]);
     }
 
