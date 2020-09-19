@@ -21,6 +21,24 @@ body {
     background: white;
     line-height: 1rem;
 }
+button:focus {
+    outline:0;
+}
+
+/** header **/
+/* header */
+
+/** footer **/
+
+/* footer */
+
+/** general **/
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 191, 219, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar-light .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 191, 219, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M6 6L 24 24M24 6L6 24'/%3E%3C/svg%3E");
+}
 .font-size-14px{
     font-size: 14px !important;
 }
@@ -43,6 +61,17 @@ body {
     height: 100%;
     object-fit: cover;
 }
+.background-theme {
+    background-color: var(--themecolor);
+}
+
+.background-white {
+    background-color: white !important;
+}
+.background-black{
+    background-color: black !important;
+}
+/* general */
 
 .index-top {
     height: 300px;
@@ -62,17 +91,6 @@ body {
     .index-top-slide h2 {
         font-size: 20px;
     }
-}
-
-.background-theme {
-    background-color: var(--themecolor);
-}
-
-.background-white {
-    background-color: white !important;
-}
-.background-black{
-    background-color: black !important;
 }
 
 .section-header {

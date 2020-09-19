@@ -44,16 +44,9 @@
     <p class="text-center m-5">準備中</p>
 
     @include('layouts.section-header',['title'=>'ARTIST',])
-    <section class="container">
-        <div class="row">
-            @foreach($artists as $artist)
-                <div class="col-4 py-3 artist-cell">
-                    <img src="{{asset('storage/img/shares/artist/eyecatch/'.$artist->eyecatch)}}"
-                         class="object-fit background-theme">
-                </div>
-            @endforeach
-        </div>
-    </section>
+    @include('layouts.artist',['artists'=>$artists])
+    @include('layouts.more',['text'=>'MORE','url'=>'/'])
+
 @endsection
 @section('addjs')
     <script>
