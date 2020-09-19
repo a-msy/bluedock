@@ -1,5 +1,5 @@
 <!-- Slider main container -->
-<div class="swiper-container{{$number}} mt-4" style="height:inherit;">
+<div class="swiper-container sw-{{$number}} mt-4" style="height:inherit;">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
         <!-- Slides -->
@@ -14,4 +14,4 @@
         @endforeach
     </div>
     <!-- If we need pagination -->
-    <div class="swiper-pagination{{$number}}"></div>
+    <div class="swiper-pagination sp-{{$number}}"></div>

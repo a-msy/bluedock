@@ -137,11 +137,19 @@ body {
     border-bottom: solid 1px lightgray;
 }
 .news-cell-img{
-    max-width: 160px;
+    min-width: 170px;
     width: 100%;
+    max-width: 200px;
+}
+.artist-cell{
+    max-width: 256px;
+    height: 100px;
 }
 @media screen and (min-width: 768px) {
     .news-cell-img{
         max-width: 300px;
+    }
+    .artist-cell{
+        height: 256px;
     }
 }

@@ -2,7 +2,7 @@
 @section('content')
     <section class="index-top">
         <!-- Slider main container -->
-        <div class="swiper-container" style="height: 100%;">
+        <div class="swiper-container sw" style="height: 100%;">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
@@ -22,72 +22,79 @@
             {{--            <div class="swiper-button-next"></div>--}}
         </div>
     </section>
-    @include('layouts.section-header',[
-    'title'=>'INTERVIEW',
-    'addcss'=>"",
-    'addstyle'=>"",
-    'addstyle2'=>""
-    ])
+    @include('layouts.section-header',['title'=>'INTERVIEW',])
     <section class="interview overflow-hidden">
-        @include('layouts.swiper',['articles'=>$articles,'number'=>2])
+        @include('layouts.swiper',['articles'=>$interview_articles,'number'=>2])
     </section>
     @include('layouts.more',['text'=>'MORE','url'=>'/'])
     <section class="background-black overflow-hidden popular">
         {{--        TODO::人気順記事を取得するロジックを組む--}}
-        @include('layouts.section-header',[
-    'title'=>'POPULAR',
-    'addcss'=>"text-white",
-    'addstyle'=>"",
-    'addstyle2'=>"border-color:white !important;"
-    ])
-        @include('layouts.swiper',['articles'=>$articles,'number'=>3])
+        @include('layouts.section-header',['title'=>'POPULAR','addcss'=>"text-white",'addstyle'=>"",'addstyle2'=>"border-color:white !important;"])
+        @include('layouts.swiper',['articles'=>$top_articles,'number'=>3])
     </section>
-    @include('layouts.section-header',[
-        'title'=>'NEWS',
-        'addcss'=>"",
-        'addstyle'=>"",
-        'addstyle2'=>""
-    ])
-    @include('layouts.news',['articles'=>$new_articles])
+    @include('layouts.section-header',['title'=>'NEWS',])
+    @include('layouts.news',['articles'=>$news_articles])
+    @include('layouts.more',['text'=>'MORE','url'=>'/'])
+
+    @include('layouts.section-header',['title'=>'COLUMN',])
+    @include('layouts.news',['articles'=>$column_articles])
+    @include('layouts.more',['text'=>'MORE','url'=>'/'])
+
+    @include('layouts.section-header',['title'=>'Pics Ranking',])
+    <p class="text-center m-5">準備中</p>
+
+    @include('layouts.section-header',['title'=>'ARTIST',])
+    <section class="container">
+        <div class="row">
+            @foreach($artists as $artist)
+                <div class="col-4 py-3 artist-cell">
+                    <img src="{{asset('storage/img/shares/artist/eyecatch/'.$artist->eyecatch)}}"
+                         class="object-fit background-theme">
+                </div>
+            @endforeach
+        </div>
+    </section>
 @endsection
 @section('addjs')
     <script>
-        var mySwiper1 = new Swiper('.swiper-container', {
-            effect: "slide",
-            loop: true,
-            slidesPerView: 1,
-            spaceBetween: 0,
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                }
-            },
-            centeredSlides: true,
-            pagination: '.swiper-pagination',
-        })
-        var mySwiper2 = new Swiper('.swiper-container2', {
-            effect: "slide",
-            loop: true,
-            slidesPerView: 2,
-            spaceBetween: 5,
-            breakpoints: {
-                768: {
-                    slidesPerView: 4,
-                }
-            },
-            pagination: '.swiper-pagination2',
-        })
-        var mySwiper2 = new Swiper('.swiper-container3', {
-            effect: "slide",
-            loop: true,
-            slidesPerView: 2,
-            spaceBetween: 5,
-            breakpoints: {
-                768: {
-                    slidesPerView: 4,
-                }
-            },
-            pagination: '.swiper-pagination2',
-        })
+        $(document).ready(function () {
+            var mySwiper1 = new Swiper('.sw', {
+                effect: "slide",
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 0,
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                    }
+                },
+                centeredSlides: true,
+                pagination: '.swiper-pagination',
+            })
+            var mySwiper2 = new Swiper('.sw-2', {
+                effect: "slide",
+                loop: true,
+                slidesPerView: 2,
+                spaceBetween: 5,
+                breakpoints: {
+                    768: {
+                        slidesPerView: 4,
+                    }
+                },
+                pagination: '.sp-2',
+            })
+            var mySwiper2 = new Swiper('.sw-3', {
+                effect: "slide",
+                loop: true,
+                slidesPerView: 2,
+                spaceBetween: 5,
+                breakpoints: {
+                    768: {
+                        slidesPerView: 4,
+                    }
+                },
+                pagination: '.sp-3',
+            })
+        });
     </script>
 @endsection
