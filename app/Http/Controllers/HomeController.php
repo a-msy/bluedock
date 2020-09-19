@@ -26,9 +26,11 @@ class HomeController extends Controller
     {
         $articles = Article::all();
         $top_articles = Article::orderBy('updated_at','desc')->take(5)->get();
+        $new_articles = Article::orderBy('created_at','desc')->take(10)->get();
         return view('home')->with([
             'articles'=>$articles,
-            'top_articles'=>$top_articles
+            'top_articles'=>$top_articles,
+            'new_articles'=>$new_articles,
         ]);
     }
 
