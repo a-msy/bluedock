@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Article;
 use App\Models\Picture;
 use Illuminate\Http\Request;
@@ -24,9 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $interview_articles = Article::where('type',config('const.ArticleTYPE.Code.interview'))->orderBy('created_at','desc')->take(10)->get();;
+        $top_articles = Article::orderBy('updated_at','desc')->take(5)->get();
+        $news_articles = Article::where('type',config('const.ArticleTYPE.Code.news'))->orderBy('created_at','desc')->take(10)->get();
+        $column_articles = Article::where('type',config('const.ArticleTYPE.Code.column'))->orderBy('created_at','desc')->take(10)->get();
+        $artists = Admin::inRandomOrder()->take(12)->get();
         return view('home')->with([
-            'articles'=>$articles,
+            'interview_articles'=>$interview_articles,
+            'top_articles'=>$top_articles,
+            'news_articles'=>$news_articles,
+            'column_articles'=>$column_articles,
+            'artists'=>$artists
         ]);
     }
 
