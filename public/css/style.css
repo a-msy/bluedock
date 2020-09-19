@@ -20,11 +20,20 @@ body {
     letter-spacing: .07em;
     background: white;
     line-height: 1rem;
+    min-height: 100vh;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+html {
+    height: 100%;
+}
+#app {
+    flex: 1;
 }
 button:focus {
     outline:0;
 }
-
 /** header **/
 /* header */
 
