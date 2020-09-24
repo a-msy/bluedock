@@ -73,10 +73,15 @@
                     <div class="form-group">
                         <label>記事タイプ</label>
                         <select name="type" class="form-control">
-                            @foreach(config('const.ArticleTYPE') as $key=>$type)
+                            @foreach(config('const.ArticleTYPE.Text') as $key=>$type)
                                 <option value="{{$key}}"
-                                        @if(isset($article) == true) @if($article->type == $key) selected
-                                        @endif @elseif($key == 0 ) selected @endif >{{$type}}</option>
+                                        @if(isset($article) == true)
+                                            @if($article->type == $key)
+                                                selected
+                                            @endif
+                                        @elseif($key == 0)
+                                            selected
+                                        @endif >{{$type}}</option>
                             @endforeach
                         </select>
                     </div>
