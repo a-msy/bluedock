@@ -183,6 +183,7 @@ button:focus {
 .thumbnail{
     width: 100%;
     height: auto;
+    overflow:hidden;
 }
 @media screen and (min-width:768px){
     .thumbnail{
@@ -193,7 +194,7 @@ button:focus {
     clip-path : polygon(0% 0%, 0% 100%, 100% 75%, 100% 0% );
 }
 .thumbnail h1{
-    font-size: 4vw;
+    font-size: 20px;
     background-color: #00bfdb;
     color: #FFFFFF;
     display: inline;

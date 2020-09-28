@@ -9,20 +9,21 @@
 </div>
 
     <div class="container">
-        <ul style="width: 100%; list-style: none;">
+        <div class="row">
             @foreach($admins as $admin)
-                <li style="padding: 0; float: left; width:50%;">
-                    <div style="inline-block; text-align: center;">
-                        <img src="https://via.placeholder.com/200" class="object-fit pictures"></img>
-                        <br>
-                        <a href="{{route('admin.detail',['id'=>$admin->id])}}" style="font-size: 2vw; line-height: 150%;">{{$admin->name}}</a>
+                <div class="col-6 text-center">
+                    <div class="pictures">
+                        <img src="https://via.placeholder.com/200" class="object-fit"></img>
+                    </div>
+                    <div class="">
+                        <a href="{{route('admin.detail',['id'=>$admin->id])}}">{{$admin->name}}</a>
                     </div>
                     <div class="tag">
                         Tag
                     </div>
-                </li>
+                </div>
             @endforeach
-        </ul>
+        </div>
         {{$admins->links()}}
     </div>
 @endsection
