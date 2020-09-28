@@ -179,3 +179,57 @@ button:focus {
         height: 256px;
     }
 }
+
+.thumbnail{
+    width: 100%;
+    height: auto;
+}
+@media screen and (min-width:768px){
+    .thumbnail{
+        height: 480px;
+    }
+}
+.thumbnail img{
+    clip-path : polygon(0% 0%, 0% 100%, 100% 75%, 100% 0% );
+}
+.thumbnail h1{
+    font-size: 4vw;
+    background-color: #00bfdb;
+    color: #FFFFFF;
+    display: inline;
+    padding: 1%;
+    line-height: 150%;
+}
+
+.tag{
+    color: #00bfdb;
+    font-size: 1vw;
+}
+.tag:before{
+	content: '\f02b';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.titlebar{
+    display: inline;
+    background-color: #00bfdb;
+    color: #FFFFFF;
+    font-size: 5vw;
+    padding-right: 30%;
+    line-height: 150%;
+}
+
+.zoom{
+    color: #00bfdb;
+}
+.zoom:before{
+	content: '\f002';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.pictures{
+    border-radius: 50%;
+    width: 80%;
+}
