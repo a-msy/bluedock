@@ -11,9 +11,7 @@
 </section>
 
 <section class="container">
-    <div style="font-size: 15px">
-        <span style="color:#00bfff">NEWS</span><span style="color: #c0c0c0">｜2020.09.15</span>
-    </div>
+    <div style="font-size: 15px"><span>NEWS</span><span style="color: #c0c0c0">｜2020.09.15</span></div>
     <div style="line-height: 30px;">
         <figure class="float-right">
             <img src="http://via.placeholder.com/150x100">
