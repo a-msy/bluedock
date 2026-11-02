@@ -1,0 +1,8 @@
+# ローカル開発用（.dev.vars にコピーして使う）。本番では設定しない
+# x-debug-now ヘッダーで現在時刻を差し替えられるようにする
+DEBUG_TIME=1
+# すれちがいがすぐ届くようにする（本番は1〜3時間）
+ENCOUNTER_DELAY_MIN_MS=0
+ENCOUNTER_DELAY_MAX_MS=0
+# 位置送信の間隔制限をなくす（本番は5分）
+PING_INTERVAL_MS=0

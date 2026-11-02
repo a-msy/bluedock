@@ -4,6 +4,7 @@
 
 import { type ChildProcess, execFileSync, spawn } from 'node:child_process';
 import { mkdtempSync, rmSync } from 'node:fs';
+import { createServer } from 'node:net';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
@@ -19,8 +20,22 @@ import {
   startBattle,
 } from '@pieris/shared';
 
-const PORT = 8790 + Math.floor(Math.random() * 100);
-const BASE = `http://127.0.0.1:${PORT}`;
+let PORT = 0;
+let BASE = '';
+
+/** 空いているポートを1つ探す（前回の残りのサーバーに当たらないように） */
+function freePort(): Promise<number> {
+  return new Promise((resolve, reject) => {
+    const srv = createServer();
+    srv.unref();
+    srv.on('error', reject);
+    srv.listen(0, '127.0.0.1', () => {
+      const addr = srv.address();
+      const port = typeof addr === 'object' && addr ? addr.port : 0;
+      srv.close(() => resolve(port));
+    });
+  });
+}
 const HOUR = 3600_000;
 const MIN = 60_000;
 // 2026-11-02 10:00 JST
@@ -260,6 +275,8 @@ async function main() {
   const persistDir = mkdtempSync(join(tmpdir(), 'pieris-e2e-'));
   const env = { ...process.env, WRANGLER_SEND_METRICS: 'false', CI: '1' };
   let proc: ChildProcess | undefined;
+  PORT = await freePort();
+  BASE = `http://127.0.0.1:${PORT}`;
   try {
     console.log('ローカルDBを準備しています…');
     execFileSync('npx', ['wrangler', 'd1', 'migrations', 'apply', 'pieris', '--local', '--persist-to', persistDir], {
@@ -270,7 +287,8 @@ async function main() {
     proc = spawn(
       'npx',
       ['wrangler', 'dev', '--port', String(PORT), '--ip', '127.0.0.1', '--persist-to', persistDir, '--var', 'DEBUG_TIME:1', '--show-interactive-dev-session=false'],
-      { env, stdio: ['ignore', 'pipe', 'pipe'] },
+      // 独立したプロセスグループで起動し、終わる時にグループごと止める（workerd の子プロセスも含めて）
+      { env, stdio: ['ignore', 'pipe', 'pipe'], detached: true },
     );
     let log = '';
     proc.stdout?.on('data', (d) => (log += d));
@@ -283,7 +301,14 @@ async function main() {
     }
     await scenarios(persistDir);
   } finally {
-    proc?.kill('SIGTERM');
+    if (proc?.pid) {
+      try {
+        process.kill(-proc.pid, 'SIGTERM');
+      } catch {
+        proc.kill('SIGTERM');
+      }
+      await new Promise((r) => setTimeout(r, 500));
+    }
     rmSync(persistDir, { recursive: true, force: true });
   }
   console.log(`\n${passes} passed, ${failures} failed`);

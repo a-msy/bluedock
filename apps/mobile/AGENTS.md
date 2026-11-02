@@ -39,3 +39,9 @@ Docs: https://docs.expo.dev/eas/index.md
 - If `ios/` and `android/` directories do not exist, they are generated (Continuous Native Generation). Never create or edit them by hand — configure native behavior in `app.json` and config plugins.
 - Expo Go only includes its bundled native modules. After adding a library with native code, the app needs a development build: `npx expo run:ios|android` locally, or `eas build --profile development`.
 - Prefer recommended Expo modules over third-party libraries, and check your available skills before adding dependencies. Docs: https://docs.expo.dev/versions/latest/index.md
+
+## This project
+
+- Part of the `pieris` npm-workspaces monorepo. Shared game logic (battle engine, levels, geohash) lives in `packages/shared` and is imported as `@pieris/shared`; the API is `apps/server`.
+- Navigation is intentionally a tiny state machine in `App.tsx` instead of Expo Router, to keep the app's feature set minimal. Switch to Expo Router if the screen count grows.
+- The API base URL comes from `EXPO_PUBLIC_API_URL` (see `.env.example`).
