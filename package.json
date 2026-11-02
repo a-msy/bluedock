@@ -1,0 +1,21 @@
+{
+  "name": "pieris",
+  "private": true,
+  "version": "0.1.0",
+  "description": "擬似すれちがい通信RPG（すれちがった人の力を借りて敵を倒す）",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "npm run test -w @pieris/shared && npm run test -w @pieris/server",
+    "typecheck": "npm run typecheck -w @pieris/shared && npm run typecheck -w @pieris/server && npm run typecheck -w @pieris/mobile",
+    "balance": "npm run balance -w @pieris/shared",
+    "server:dev": "npm run dev -w @pieris/server",
+    "server:e2e": "npm run e2e -w @pieris/server",
+    "mobile": "npm run start -w @pieris/mobile"
+  },
+  "overrides": {
+    "react": "19.3.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@pieris/shared",
+  "version": "0.1.0",
+  "private": true,
+  "description": "サーバーとアプリで共有するゲームロジック（ジョブ・レベル・ジオハッシュ・バトル）",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "balance": "vitest run test/balance.test.ts --reporter=verbose"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.5"
+  }
+}

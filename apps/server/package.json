@@ -1,0 +1,25 @@
+{
+  "name": "@pieris/server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "擬似すれちがいRPGのAPI（Cloudflare Workers + D1）",
+  "scripts": {
+    "dev": "wrangler dev --port 8787",
+    "deploy": "wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply pieris --local",
+    "db:migrate:remote": "wrangler d1 migrations apply pieris --remote",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "e2e": "node scripts/e2e.mjs"
+  },
+  "dependencies": {
+    "@pieris/shared": "*",
+    "hono": "^4.13.16"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261102.1",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.5",
+    "wrangler": "^4.156.1"
+  }
+}
