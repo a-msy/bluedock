@@ -23,8 +23,6 @@ export interface MeResponse {
     steps: number;
     distanceMeters: number;
   };
-  /** まだ届いていない（配信待ちの）すれちがいの人数 */
-  pending: number;
   /** 届いていて、まだ使っていない助っ人の人数 */
   available: number;
 }
@@ -68,9 +66,9 @@ export interface HelperCard extends HelperSnapshot {
   isNew: boolean;
 }
 
+// 配信待ちの人数はあえて返さない（「今近くに誰かいた」と分かってしまうため）
 export interface HelpersResponse {
   helpers: HelperCard[];
-  pending: number;
 }
 
 export interface StartAdventureRequest {

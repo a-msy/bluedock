@@ -1,0 +1,23 @@
+{
+  // 擬似すれちがいRPG API
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "pieris-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "pieris",
+      // `npx wrangler d1 create pieris` で作ったIDに置き換える
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // 1時間ごと: 48時間を過ぎた位置記録の削除など
+  "triggers": {
+    "crons": ["17 * * * *"]
+  },
+  "observability": {
+    "enabled": true
+  }
+}
